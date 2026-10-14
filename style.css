@@ -1,0 +1,250 @@
+/* 规则之书·简版 —— 暗色锌灰 + 蓝/青徽章，风格参照 MVU 规则修改器前端 */
+
+#rbl-fab {
+  position: fixed;
+  right: 18px;
+  bottom: 72px;
+  z-index: 20000;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid rgba(59, 130, 246, 0.55);
+  background: #18181b;
+  color: #00f3ff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+#rbl-fab:hover { box-shadow: 0 0 18px rgba(0, 243, 255, 0.45); }
+
+#rbl-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20001;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#rbl-panel {
+  width: min(860px, 94vw);
+  height: min(640px, 90vh);
+  background: #18181b;
+  color: #e4e4e7;
+  border: 1px solid #3f3f46;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  font-size: 13px;
+}
+
+.rbl-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #27272a;
+  background: #1f1f23;
+  flex-shrink: 0;
+}
+.rbl-header .rbl-title {
+  font-size: 15px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #3b82f6, #00f3ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.rbl-header .rbl-sync-state {
+  font-size: 11px;
+  color: #71717a;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rbl-btn {
+  background: #27272a;
+  color: #e4e4e7;
+  border: 1px solid #3f3f46;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.rbl-btn:hover { border-color: #3b82f6; color: #fff; }
+.rbl-btn.primary { background: #3b82f6; border-color: #3b82f6; color: #fff; }
+.rbl-btn.primary:hover { background: #2563eb; }
+.rbl-btn.danger:hover { border-color: #ef4444; color: #ef4444; }
+
+.rbl-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 12px 0;
+  border-bottom: 1px solid #27272a;
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+.rbl-tab {
+  padding: 6px 12px;
+  font-size: 12.5px;
+  color: #a1a1aa;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  white-space: nowrap;
+  user-select: none;
+}
+.rbl-tab:hover { color: #e4e4e7; }
+.rbl-tab.active {
+  color: #00f3ff;
+  background: #18181b;
+  border-color: #3f3f46;
+  position: relative;
+}
+.rbl-tab.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 2px;
+  background: #18181b;
+}
+
+.rbl-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 14px;
+}
+
+.rbl-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 8px;
+}
+.rbl-count { color: #71717a; font-size: 12px; }
+
+.rbl-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+}
+
+.rbl-card {
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.rbl-card.enabled { border-color: rgba(59, 130, 246, 0.6); box-shadow: 0 0 8px rgba(59, 130, 246, 0.15); }
+.rbl-card .rc-title-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.rbl-card .rc-name { font-weight: 650; font-size: 13.5px; color: #fafafa; }
+
+.rbl-badge {
+  font-size: 10.5px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  border: 1px solid #52525b;
+  color: #a1a1aa;
+  white-space: nowrap;
+}
+.rbl-badge.on {
+  color: #00f3ff;
+  border-color: rgba(0, 243, 255, 0.5);
+  background: rgba(0, 243, 255, 0.08);
+}
+.rbl-badge.off { color: #71717a; }
+.rbl-badge.type-world { color: #60a5fa; border-color: rgba(59, 130, 246, 0.5); }
+.rbl-badge.type-region { color: #34d399; border-color: rgba(5, 150, 105, 0.55); }
+.rbl-badge.type-personal { color: #c084fc; border-color: rgba(139, 92, 246, 0.55); }
+
+.rbl-card .rc-desc {
+  color: #d4d4d8;
+  font-size: 12.5px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.rbl-card .rc-meta { color: #71717a; font-size: 11px; }
+.rbl-card .rc-actions { display: flex; gap: 6px; margin-top: 2px; }
+.rbl-card .rc-actions .rbl-btn { padding: 3px 8px; font-size: 11.5px; }
+
+.rbl-empty {
+  color: #52525b;
+  text-align: center;
+  padding: 40px 0;
+  font-size: 13px;
+}
+
+/* 设置页 */
+.rbl-form { display: flex; flex-direction: column; gap: 12px; max-width: 520px; }
+.rbl-field { display: flex; flex-direction: column; gap: 4px; }
+.rbl-field label { color: #a1a1aa; font-size: 12px; }
+.rbl-field input, .rbl-field textarea, .rbl-field select {
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  border-radius: 6px;
+  color: #e4e4e7;
+  padding: 7px 9px;
+  font-size: 13px;
+  font-family: inherit;
+}
+.rbl-field input:focus, .rbl-field textarea:focus, .rbl-field select:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+.rbl-field textarea { min-height: 90px; resize: vertical; }
+.rbl-hint { color: #71717a; font-size: 11.5px; line-height: 1.6; }
+.rbl-hint code { color: #00f3ff; }
+
+/* 编辑弹窗 */
+#rbl-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20002;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#rbl-modal {
+  width: min(460px, 92vw);
+  background: #1f1f23;
+  border: 1px solid #3f3f46;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#rbl-modal h3 { margin: 0; font-size: 14px; color: #fafafa; }
+#rbl-modal .rbl-modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
+
+/* 同步历史 */
+.rbl-history-item {
+  display: flex;
+  gap: 10px;
+  padding: 7px 10px;
+  border-bottom: 1px solid #27272a;
+  font-size: 12px;
+}
+.rbl-history-item .time { color: #71717a; white-space: nowrap; }
+.rbl-history-item .msg { color: #d4d4d8; word-break: break-word; }
+
+@media (max-width: 560px) {
+  #rbl-panel { width: 100vw; height: 100vh; border-radius: 0; }
+  .rbl-cards { grid-template-columns: 1fr; }
+}
