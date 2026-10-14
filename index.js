@@ -1,7 +1,7 @@
 // 规则之书·简版 —— SillyTavern 第三方扩展
 // 功能：世界/区域/个人规则 + 区域/建筑/角色 的增删改、启用开关、提示词注入、GitHub 私有仓库同步
 import { extension_settings, getContext } from '../../../extensions.js';
-import { saveSettingsDebounced, setExtensionPrompt, extension_prompt_types } from '../../../../script.js';
+import { saveSettingsDebounced, setExtensionPrompt, extension_prompt_types, eventSource, event_types } from '../../../../script.js';
 
 const EXT_KEY = 'rule-book-lite';
 const PROMPT_KEY = 'rule_book_lite';
@@ -594,4 +594,8 @@ jQuery(async () => {
   data();
   rebuildInjection();
   buildFab();
+
+  // 注入的提示词是按聊天存档保存的；切换角色卡/聊天后必须重新注入，
+  // 否则新聊天里规则不会进入上下文（面板数据是全局的，所以会"显示启用但没生效"）
+  eventSource.on(event_types.CHAT_CHANGED, () => rebuildInjection());
 });
